@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9C01472A1CA0775400ED9CB3"
+               BuildableName = "Mercury Patch PrototypeTests.xctest"
+               BlueprintName = "Mercury Patch PrototypeTests"
+               ReferencedContainer = "container:Mercury Patch Prototype.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

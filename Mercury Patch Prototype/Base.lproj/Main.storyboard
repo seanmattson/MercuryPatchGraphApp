@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Line Graph View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LineGraphViewController" customModule="Mercury_Patch_Prototype" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,60 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PFe-Fz-Kcz" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="40" y="84" width="520" height="416"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Practice Chart" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWD-0t-93a">
+                                <rect key="frame" x="175" y="28" width="251" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="zYC-l4-N8P">
+                                <rect key="frame" x="158" y="520" width="285" height="36"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jgb-Wy-0Nh">
+                                        <rect key="frame" x="0.0" y="0.0" width="101" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Fill In Chart"/>
+                                        <connections>
+                                            <action selector="fillInChart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KwF-Hd-6LJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qd3-6R-SQD">
+                                        <rect key="frame" x="201" y="0.0" width="84" height="36"/>
+                                        <rect key="contentStretch" x="0.69999999999999996" y="0.0" width="1" height="1"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Add Data"/>
+                                        <connections>
+                                            <action selector="addData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sZp-mm-TXS"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zYC-l4-N8P" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2Vo-L7-CIl"/>
+                            <constraint firstItem="uWD-0t-93a" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6ra-jS-x5m"/>
+                            <constraint firstItem="PFe-Fz-Kcz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="XU5-My-Gyk"/>
+                            <constraint firstItem="PFe-Fz-Kcz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aUS-md-7nP"/>
+                            <constraint firstItem="zYC-l4-N8P" firstAttribute="top" secondItem="PFe-Fz-Kcz" secondAttribute="bottom" constant="20" id="iJC-x4-oR4"/>
+                            <constraint firstItem="PFe-Fz-Kcz" firstAttribute="top" secondItem="uWD-0t-93a" secondAttribute="bottom" constant="8" id="kDJ-9S-O0o"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PFe-Fz-Kcz" secondAttribute="bottom" constant="100" id="n8H-hy-DYc"/>
+                            <constraint firstItem="uWD-0t-93a" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="pqP-8f-Vyq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PFe-Fz-Kcz" secondAttribute="trailing" constant="20" id="r6T-yn-8DZ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="lineChartView" destination="PFe-Fz-Kcz" id="uzl-2T-BDf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="445" y="428"/>
         </scene>
     </scenes>
 </document>

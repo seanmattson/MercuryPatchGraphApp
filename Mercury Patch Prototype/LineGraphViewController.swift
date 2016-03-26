@@ -13,6 +13,7 @@ class LineGraphViewController: UIViewController, ChartViewDelegate {
     
     let pressureGenerator = DynamicDataGenerator()
     var setData: SetChartData?
+    let bluetooth = MetaWearBluetoothObjC()
     
     @IBOutlet weak var lineChartView: LineChartView!
     
@@ -26,23 +27,24 @@ class LineGraphViewController: UIViewController, ChartViewDelegate {
         lineChartView.noDataText = "The patch is not hooked up"
     }
     
-    func setChartData() {
-        setData = SetChartData(data: pressureGenerator.dataArray)
+    /*func setChartData() {
+        setData = SetChartData()
         let graphDataSet = setData!.set
         let data: LineChartData = LineChartData(xVals: setData!.rawData, dataSet: graphDataSet)
         
         lineChartView.data = data
-    }
+    } */ 
     
     
     @IBAction func fillInChart(sender: AnyObject) {
-        setChartData()
-        
+        bluetooth.getDevice()
+        setData = SetChartData()
     }
     
     @IBAction func addData(sender: AnyObject) {
-        pressureGenerator.addPoint()
-        setData?.dataAdded(pressureGenerator.dataArray)
+        
+        bluetooth.getValues()
+        setData?.dataAdded(bluetooth.voltageData)
         
         if let actuallyThere = (setData?.set.entryCount) {
             let data: LineChartData = LineChartData(xVals: [Int](count: actuallyThere, repeatedValue: 1), dataSet: setData?.set)

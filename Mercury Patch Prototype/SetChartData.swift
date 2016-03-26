@@ -10,16 +10,11 @@ import Foundation
 import Charts
 
 class SetChartData {
-    var rawData: [Double]
+    var rawData: [Double]?
     var yValues = [ChartDataEntry]()
     var set: LineChartDataSet
     
-    init (data: [Double]) {
-        rawData = data
-        
-        for i in 0 ... (rawData.count - 1) {
-            yValues.append(ChartDataEntry(value: rawData[i], xIndex: i))
-        }
+    init () {
         set = LineChartDataSet(yVals: yValues, label: "Pressure")
         set.axisDependency = .Left
         set.setColor(UIColor.redColor())
@@ -31,6 +26,11 @@ class SetChartData {
     }
     
     func dataAdded(newDataArray: [Double]) {
+        if newDataArray.isEmpty {
+            print("No data is this array")
+            return
+        }
+        rawData = newDataArray
         let newPoint = newDataArray.last!
         let newIndex = newDataArray.count - 1
         let newData = ChartDataEntry(value: newPoint, xIndex: newIndex)

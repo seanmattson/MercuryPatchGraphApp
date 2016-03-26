@@ -12,6 +12,7 @@ import Charts
 class LineGraphViewController: UIViewController, ChartViewDelegate {
     
     let pressureGenerator = DynamicDataGenerator()
+    var setData: SetChartData?
     
     @IBOutlet weak var lineChartView: LineChartView!
     
@@ -20,32 +21,17 @@ class LineGraphViewController: UIViewController, ChartViewDelegate {
         lineChartView.delegate = self
         lineChartView.descriptionText = ""
         lineChartView.gridBackgroundColor = UIColor.darkGrayColor()
+        lineChartView.dragEnabled = true
         
         lineChartView.noDataText = "The patch is not hooked up"
     }
     
-    
     func setChartData() {
-        var yVals: [ChartDataEntry] = [ChartDataEntry]()
-        let pressure = pressureGenerator.dataArray
-        
-        for var i = 0; i < pressure.count; i++ {
-            yVals.append(ChartDataEntry(value: pressure[i], xIndex: i))
-        }
-        
-        let set: LineChartDataSet = LineChartDataSet(yVals: yVals, label: "First Test")
-        
-        set.axisDependency = .Left
-        set.setColor(UIColor.redColor())
-        set.lineWidth = 2.0
-        set.drawCirclesEnabled = false
-        set.drawValuesEnabled = false
-        set.drawCubicEnabled = true
-        
-        let data: LineChartData = LineChartData(xVals: pressure, dataSet: set)
+        setData = SetChartData(data: pressureGenerator.dataArray)
+        let graphDataSet = setData!.set
+        let data: LineChartData = LineChartData(xVals: setData!.rawData, dataSet: graphDataSet)
         
         lineChartView.data = data
-        lineChartView.xAxis.labelPosition = .Bottom
     }
     
     
@@ -56,7 +42,17 @@ class LineGraphViewController: UIViewController, ChartViewDelegate {
     
     @IBAction func addData(sender: AnyObject) {
         pressureGenerator.addPoint()
-        setChartData()
+        setData?.dataAdded(pressureGenerator.dataArray)
+        
+        if let actuallyThere = (setData?.set.entryCount) {
+            let data: LineChartData = LineChartData(xVals: [Int](count: actuallyThere, repeatedValue: 1), dataSet: setData?.set)
+            lineChartView.data = data
+        } else {
+            return
+        }
+        lineChartView.setVisibleXRangeMaximum(10)
+        lineChartView.moveViewToX(CGFloat((setData?.set.entryCount)!-10))
+
     }
     
 }

@@ -11,9 +11,9 @@ import Charts
 
 class LineGraphViewController: UIViewController, ChartViewDelegate {
     
-    let pressureGenerator = DynamicDataGenerator()
-    var setData: SetChartData?
-    let bluetooth = MetaWearBluetoothObjC()
+    var pressureGenerator = DynamicDataGenerator()
+    var setData = SetChartData()
+    var timer = NSTimer()
     
     @IBOutlet weak var lineChartView: LineChartView!
     
@@ -27,34 +27,35 @@ class LineGraphViewController: UIViewController, ChartViewDelegate {
         lineChartView.noDataText = "The patch is not hooked up"
     }
     
-    /*func setChartData() {
-        setData = SetChartData()
-        let graphDataSet = setData!.set
-        let data: LineChartData = LineChartData(xVals: setData!.rawData, dataSet: graphDataSet)
+    func setChartData() {
         
+        pressureGenerator.addPoint()
+        setData.dataAdded(pressureGenerator.dataArray1)
+        
+        
+        let data: LineChartData = LineChartData(xVals: [Int](count: setData.set.entryCount, repeatedValue: 1), dataSet: setData.set)
         lineChartView.data = data
-    } */ 
-    
-    
-    @IBAction func fillInChart(sender: AnyObject) {
-        bluetooth.getDevice()
-        setData = SetChartData()
+        
+        lineChartView.setVisibleXRangeMaximum(10)
+        lineChartView.moveViewToX(CGFloat((setData.set.entryCount)))
+        
+        /* print("Array 2 is \(pressureGenerator.dataArray2)")
+        print("Array 3 is \(pressureGenerator.dataArray3)")
+        print("Array 4 is \(pressureGenerator.dataArray4)")
+        print("Array 5 is \(pressureGenerator.dataArray5)")
+        print("Array 6 is \(pressureGenerator.dataArray6)")
+        print("Array 7 is \(pressureGenerator.dataArray7)") */
+
     }
     
-    @IBAction func addData(sender: AnyObject) {
-        
-        bluetooth.getValues()
-        setData?.dataAdded(bluetooth.voltageData)
-        
-        if let actuallyThere = (setData?.set.entryCount) {
-            let data: LineChartData = LineChartData(xVals: [Int](count: actuallyThere, repeatedValue: 1), dataSet: setData?.set)
-            lineChartView.data = data
-        } else {
-            return
-        }
-        lineChartView.setVisibleXRangeMaximum(10)
-        lineChartView.moveViewToX(CGFloat((setData?.set.entryCount)!-10))
+    
+    @IBAction func startStreaming(sender: AnyObject) {
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: #selector(LineGraphViewController.setChartData), userInfo: nil, repeats: true)
 
+    }
+    
+    @IBAction func stopStreaming(sender: AnyObject) {
+        timer.invalidate()
     }
     
 }

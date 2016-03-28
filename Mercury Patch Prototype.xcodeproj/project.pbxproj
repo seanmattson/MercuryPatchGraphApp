@@ -18,7 +18,7 @@
 		9C0BB6411CA03B5500EFE7BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C0BB6401CA03B5500EFE7BF /* Assets.xcassets */; };
 		9C0BB6441CA03B5500EFE7BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C0BB6421CA03B5500EFE7BF /* LaunchScreen.storyboard */; };
 		9C0BB6501CA046BA00EFE7BF /* LineGraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BB64F1CA046BA00EFE7BF /* LineGraphViewController.swift */; };
-		9CB654441CA5BD8500A92A2E /* MetaWearBluetoothObjC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB654431CA5BD8500A92A2E /* MetaWearBluetoothObjC.swift */; };
+		9CB95EB21CA8A77500CBA3EE /* ForceSensorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB95EB11CA8A77500CBA3EE /* ForceSensorTableViewController.swift */; };
 		9CDDD1F41CA1AA0B0064F4CC /* SetChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDDD1F31CA1AA0B0064F4CC /* SetChartData.swift */; };
 		BBC8CED533F9ED9131510260 /* Pods_Mercury_Patch_Prototype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4356316C7061C3266298D80B /* Pods_Mercury_Patch_Prototype.framework */; };
 /* End PBXBuildFile section */
@@ -66,6 +66,7 @@
 		9C0BB6451CA03B5500EFE7BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C0BB64F1CA046BA00EFE7BF /* LineGraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineGraphViewController.swift; sourceTree = "<group>"; };
 		9CB654431CA5BD8500A92A2E /* MetaWearBluetoothObjC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetaWearBluetoothObjC.swift; sourceTree = "<group>"; };
+		9CB95EB11CA8A77500CBA3EE /* ForceSensorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForceSensorTableViewController.swift; sourceTree = "<group>"; };
 		9CDDD1F31CA1AA0B0064F4CC /* SetChartData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetChartData.swift; sourceTree = "<group>"; };
 		C5E8CFC8DA1C9563ECC1B84D /* Pods-Mercury Patch Prototype.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mercury Patch Prototype.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mercury Patch Prototype/Pods-Mercury Patch Prototype.release.xcconfig"; sourceTree = "<group>"; };
 		C9515A870BB715711FD53198 /* Pods-Mercury Patch Prototype.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mercury Patch Prototype.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mercury Patch Prototype/Pods-Mercury Patch Prototype.debug.xcconfig"; sourceTree = "<group>"; };
@@ -143,6 +144,7 @@
 				9C0147251CA06FE000ED9CB3 /* DynamicDataGenerator.swift */,
 				9C0BB6361CA03B5400EFE7BF /* AppDelegate.swift */,
 				9C0BB63A1CA03B5400EFE7BF /* Main.storyboard */,
+				9CB95EB11CA8A77500CBA3EE /* ForceSensorTableViewController.swift */,
 				9C0BB6401CA03B5500EFE7BF /* Assets.xcassets */,
 				9C0BB6421CA03B5500EFE7BF /* LaunchScreen.storyboard */,
 				9C0BB6451CA03B5500EFE7BF /* Info.plist */,
@@ -326,10 +328,10 @@
 			files = (
 				9C0BB63F1CA03B5400EFE7BF /* Mercury_Patch_Prototype.xcdatamodeld in Sources */,
 				9C0BB6371CA03B5400EFE7BF /* AppDelegate.swift in Sources */,
-				9CB654441CA5BD8500A92A2E /* MetaWearBluetoothObjC.swift in Sources */,
 				9C0BB6501CA046BA00EFE7BF /* LineGraphViewController.swift in Sources */,
 				9CDDD1F41CA1AA0B0064F4CC /* SetChartData.swift in Sources */,
 				9C0147261CA06FE000ED9CB3 /* DynamicDataGenerator.swift in Sources */,
+				9CB95EB21CA8A77500CBA3EE /* ForceSensorTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

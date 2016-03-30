@@ -19,6 +19,8 @@ class ForceSensorTableViewController: UITableViewController {
         let insets = UIEdgeInsets(top: statusBarHeight, left: 0, bottom: 0, right: 0)
         tableView.contentInset = insets
         tableView.scrollIndicatorInsets = insets
+        
+        tableView.rowHeight = 80
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -31,7 +33,7 @@ class ForceSensorTableViewController: UITableViewController {
         //let sensorLabels = pressureGenerator.sensorTypes.map { $0.rawValue }
         
         // Create instance of UITableViewCell, with default Appearance
-        let cell = UITableViewCell(style: .Default, reuseIdentifier: "UITableViewCell")
+        let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath)
         
         // Set text on the cell and where it is
         let sensor = sensorLabels[indexPath.row]

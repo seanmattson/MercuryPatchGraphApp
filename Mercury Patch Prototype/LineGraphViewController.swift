@@ -9,13 +9,17 @@
 import UIKit
 import Charts
 
+
 class LineGraphViewController: UIViewController, ChartViewDelegate {
-    
-    var pressureGenerator = DynamicDataGenerator()
+
     var setData = SetChartData()
     var timer = NSTimer()
+    var bluetooth = MetaWearBluetoothObjC()
+    
     
     @IBOutlet weak var lineChartView: LineChartView!
+    @IBOutlet weak var sensorButton:UIBarButtonItem!
+    @IBOutlet weak var graphTitle: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,37 +29,50 @@ class LineGraphViewController: UIViewController, ChartViewDelegate {
         lineChartView.dragEnabled = true
         
         lineChartView.noDataText = "The patch is not hooked up"
+        bluetooth.getDevice{
+            self.graphTitle.text = "Patch is connected"
+        }
+        
+        // This code block is for the sidemenu reveal
+        if self.revealViewController() != nil {
+            sensorButton.target = self.revealViewController()
+            sensorButton.action = #selector(SWRevealViewController.revealToggle(_:))
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
+        
+
     }
     
     func setChartData() {
         
-        pressureGenerator.addPoint()
-        setData.dataAdded(pressureGenerator.dataArray1)
-        
+        setData.dataAdded(bluetooth.voltageData)
         
         let data: LineChartData = LineChartData(xVals: [Int](count: setData.set.entryCount, repeatedValue: 1), dataSet: setData.set)
         lineChartView.data = data
         
-        lineChartView.setVisibleXRangeMaximum(10)
+        lineChartView.setVisibleXRangeMaximum(100)
         lineChartView.moveViewToX(CGFloat((setData.set.entryCount)))
-        
-        /* print("Array 2 is \(pressureGenerator.dataArray2)")
-        print("Array 3 is \(pressureGenerator.dataArray3)")
-        print("Array 4 is \(pressureGenerator.dataArray4)")
-        print("Array 5 is \(pressureGenerator.dataArray5)")
-        print("Array 6 is \(pressureGenerator.dataArray6)")
-        print("Array 7 is \(pressureGenerator.dataArray7)") */
 
     }
     
     
     @IBAction func startStreaming(sender: AnyObject) {
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: #selector(LineGraphViewController.setChartData), userInfo: nil, repeats: true)
-
+        bluetooth.getValues{
+            self.setData.dataAdded(self.bluetooth.voltageData)
+            
+            
+            let data: LineChartData = LineChartData(xVals: [Int](count: self.setData.set.entryCount, repeatedValue: 1), dataSet: self.setData.set)
+            self.lineChartView.data = data
+            
+            self.lineChartView.setVisibleXRangeMaximum(100)
+            self.lineChartView.moveViewToX(CGFloat((self.setData.set.entryCount)))
+            
+        }
     }
     
     @IBAction func stopStreaming(sender: AnyObject) {
-        timer.invalidate()
+        bluetooth.periodicPinValue?.stopNotificationsAsync()
+
     }
     
 }

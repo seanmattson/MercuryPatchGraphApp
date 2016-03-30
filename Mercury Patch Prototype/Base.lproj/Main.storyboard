@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="SPh-dp-NEK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OKE-N1-zCn">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -19,11 +19,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PFe-Fz-Kcz" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="40" y="84" width="520" height="416"/>
+                                <rect key="frame" x="40" y="128" width="520" height="372"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressure Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWD-0t-93a">
-                                <rect key="frame" x="177" y="28" width="246" height="48"/>
+                                <rect key="frame" x="177" y="72" width="246" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -64,13 +64,18 @@
                             <constraint firstAttribute="trailingMargin" secondItem="PFe-Fz-Kcz" secondAttribute="trailing" constant="20" id="r6T-yn-8DZ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="dad-gq-WE4">
+                        <barButtonItem key="leftBarButtonItem" title="Sensors" id="BZP-HZ-kc1"/>
+                    </navigationItem>
                     <connections>
+                        <outlet property="graphTitle" destination="uWD-0t-93a" id="BKk-42-H0w"/>
                         <outlet property="lineChartView" destination="PFe-Fz-Kcz" id="uzl-2T-BDf"/>
+                        <outlet property="sensorButton" destination="BZP-HZ-kc1" id="AXs-uT-w7R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="445" y="428"/>
+            <point key="canvasLocation" x="1257" y="428"/>
         </scene>
         <!--Force Sensor Table View Controller-->
         <scene sceneID="HKB-Fn-gWL">
@@ -81,7 +86,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Bel-Vy-tpv">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UITableViewCell" id="Bel-Vy-tpv">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bel-Vy-tpv" id="9cI-Yu-FGx">
@@ -98,7 +103,47 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="awH-fb-QLc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1176" y="428"/>
+            <point key="canvasLocation" x="445" y="1172"/>
+        </scene>
+        <!--Reveal View Controller-->
+        <scene sceneID="SnZ-E3-4Zj">
+            <objects>
+                <viewController id="OKE-N1-zCn" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JJq-12-qGw"/>
+                        <viewControllerLayoutGuide type="bottom" id="Y0n-e3-Yxd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ahm-ss-Vgq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="SPh-dp-NEK" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="FeG-bN-fYO"/>
+                        <segue destination="hg9-1d-Yy5" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="6SM-iq-HEW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aJa-dk-JiS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-756" y="562"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ZH3-H0-YYs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hg9-1d-Yy5" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="u7h-DC-691">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="g8c-ok-PhP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rwv-yA-e0a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="445" y="428"/>
         </scene>
     </scenes>
 </document>

@@ -87,68 +87,68 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZv-Za-w4r">
                                 <rect key="frame" x="148" y="149" width="75" height="75"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="5Dq-B4-vQ2"/>
                                     <constraint firstAttribute="width" constant="75" id="8o3-jv-seC"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="kfu-6q-SmQ"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="Sensor7" id="kfu-6q-SmQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfc-b1-4bF">
                                 <rect key="frame" x="263" y="314" width="75" height="75"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="hPd-6X-Wrh"/>
                                     <constraint firstAttribute="width" constant="75" id="u9O-Up-7ZI"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="UUw-aq-YjM"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="Sensor3" id="UUw-aq-YjM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQN-Mk-zix">
                                 <rect key="frame" x="377" y="149" width="75" height="75"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="9HI-6M-KNr"/>
                                     <constraint firstAttribute="height" constant="75" id="hz6-QM-gaN"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="ahW-80-LXf"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="Sensor2" id="ahW-80-LXf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YaS-OH-d2F">
                                 <rect key="frame" x="263" y="114" width="75" height="75"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="AVn-QD-qci"/>
                                     <constraint firstAttribute="width" constant="75" id="hWs-oJ-KHs"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="VXc-Zf-zx0"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="Sensor4" id="VXc-Zf-zx0"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xbb-aG-46R">
                                 <rect key="frame" x="148" y="254" width="75" height="75"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="E84-Bg-bC5"/>
                                     <constraint firstAttribute="width" constant="75" id="ThV-cC-122"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="duI-xC-WXr"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="Sensor6" id="duI-xC-WXr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoD-4s-Qcd">
                                 <rect key="frame" x="263" y="209" width="75" height="75"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="2tf-qr-f4R"/>
                                     <constraint firstAttribute="width" constant="75" id="n4p-kH-OgN"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="NdK-yi-te8"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="Sensor5" id="NdK-yi-te8"/>
                                 </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="7Da-gM-zoA">
@@ -156,13 +156,13 @@
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAs-KD-euv">
                                 <rect key="frame" x="377" y="254" width="75" height="75"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="HCy-fR-1Qr"/>
                                     <constraint firstAttribute="width" constant="75" id="RwH-rj-diT"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="a8p-YE-Mjj"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="Sensor1" id="a8p-YE-Mjj"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="3J9-nd-eRG">
@@ -210,7 +210,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sWa-Rl-6he"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="bluetoothConnection" destination="7Da-gM-zoA" id="ZFS-eU-KGM"/>
                         <outlet property="view1" destination="LQN-Mk-zix" id="Ayq-Zt-R0b"/>
@@ -218,8 +217,8 @@
                         <outlet property="view3" destination="vfc-b1-4bF" id="p4j-dA-P88"/>
                         <outlet property="view4" destination="YaS-OH-d2F" id="oif-VE-dw6"/>
                         <outlet property="view5" destination="zoD-4s-Qcd" id="F8h-YP-n2L"/>
-                        <outlet property="view6" destination="hZv-Za-w4r" id="oQQ-Xi-AId"/>
-                        <outlet property="view7" destination="xbb-aG-46R" id="UIJ-9H-4iI"/>
+                        <outlet property="view6" destination="xbb-aG-46R" id="c34-5w-P6V"/>
+                        <outlet property="view7" destination="hZv-Za-w4r" id="42o-F3-lNe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sf8-nW-Uwd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -246,6 +245,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="kfu-6q-SmQ"/>
+        <segue reference="duI-xC-WXr"/>
     </inferredMetricsTieBreakers>
 </document>

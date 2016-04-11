@@ -16,7 +16,7 @@ class LineGraphViewController: UIViewController, ChartViewDelegate {
     var timer = NSTimer()
     let bluetooth = MetaWearBluetoothObjC.sharedInstance
     var sensorReading: SensorData?
-    var sensorWeReading = 0
+    var sensorWeReading: Int!
     
     
     @IBOutlet weak var lineChartView: LineChartView!
@@ -32,6 +32,23 @@ class LineGraphViewController: UIViewController, ChartViewDelegate {
         
         lineChartView.noDataText = "The patch is not hooked up"
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        bluetooth.getValues{
+            let sensorDataSet = self.bluetooth.sensorArray[self.sensorWeReading].setData.set
+            let data: LineChartData = LineChartData(xVals: [Int](count: sensorDataSet.entryCount, repeatedValue: 1), dataSet: sensorDataSet)
+            self.lineChartView.data = data
+            
+            self.lineChartView.setVisibleXRangeMaximum(100)
+            self.lineChartView.moveViewToX(CGFloat((self.setData.set.entryCount)))
+        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewDidDisappear(true)
+        self.bluetooth.periodicPinValue?.stopNotificationsAsync()
     }
     
     
@@ -51,10 +68,9 @@ class LineGraphViewController: UIViewController, ChartViewDelegate {
             }
         }
         return 0
-    }*/
+    }
     
-    
-    @IBAction func startStreaming(sender: AnyObject) {
+   @IBAction func startStreaming(sender: AnyObject) {
         bluetooth.getValues{
             let sensorDataSet = self.bluetooth.sensorArray[self.sensorWeReading].setData.set
             let data: LineChartData = LineChartData(xVals: [Int](count: sensorDataSet.entryCount, repeatedValue: 1), dataSet: sensorDataSet)
@@ -64,7 +80,7 @@ class LineGraphViewController: UIViewController, ChartViewDelegate {
             self.lineChartView.moveViewToX(CGFloat((self.setData.set.entryCount)))
 
         }
-    }
+    }*/
     
     @IBAction func stopStreaming(sender: AnyObject) {
         bluetooth.periodicPinValue?.stopNotificationsAsync()

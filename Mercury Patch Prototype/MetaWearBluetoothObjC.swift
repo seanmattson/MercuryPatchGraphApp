@@ -31,7 +31,7 @@ class MetaWearBluetoothObjC {
     var sensorArray: [SensorData]
     let sensorChoice: [SensorToRead] = [.sensor1, .sensor2, .sensor3, .sensor4, .sensor5, .sensor6, .sensor7]
     
-    init() {
+    private init() {
         self.sensorArray = [Sensor1, Sensor2, Sensor3, Sensor4, Sensor5, Sensor6, Sensor7]
     }
 
@@ -110,8 +110,8 @@ class MetaWearBluetoothObjC {
             pin6.configuration = MBLPinConfiguration.Pullup
             pin7.configuration = MBLPinConfiguration.Pullup
         
-
         }
+        
         if equationCount < self.sensorChoice.count - 1 {
             equationCount += 1
             return equationCount
@@ -137,7 +137,7 @@ class MetaWearBluetoothObjC {
         let pin0: MBLGPIOPin = device?.gpio?.pins[0] as! MBLGPIOPin
         
         var j = 0
-        periodicPinValue = pin0.analogAbsolute.periodicReadWithPeriod(100)
+        periodicPinValue = pin0.analogAbsolute.periodicReadWithPeriod(150)
         periodicPinValue?.startNotificationsWithHandlerAsync({(obj: AnyObject?, error: NSError?) in
             j = self.getVoltageAllSensors(pin4, pin6: pin6, pin7: pin7, numberSensor: j)
             if let voltage = obj as? MBLNumericData {

@@ -10,6 +10,7 @@ import UIKit
 
 class ForceSensorTableViewController: UITableViewController {
     let sensorLabels = ["Sensor 1", "Sensor 2", "Sensor 3", "Sensor 4", "Sensor 5", "Sensor 6", "Sensor 7"]
+    //var sensorDelegate: ForceSensorTableViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,4 +42,22 @@ class ForceSensorTableViewController: UITableViewController {
         
         return cell
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // If the triggered segue is the choose sensor segue
+        if segue.identifier == "ChooseSensor" {
+            
+            // Figure out tapped row
+            if let row = tableView.indexPathForSelectedRow?.row {
+                
+                // Get sensor and pass it along
+                print(row)
+                let lineGraphViewController = segue.destinationViewController as! LineGraphViewController
+                lineGraphViewController.sensorWeReading = row
+            }
+            
+        }
+    }
+    
+    
 }

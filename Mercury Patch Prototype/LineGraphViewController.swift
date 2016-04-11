@@ -14,12 +14,14 @@ class LineGraphViewController: UIViewController, ChartViewDelegate {
 
     var setData = SetChartData()
     var timer = NSTimer()
-    var bluetooth = MetaWearBluetoothObjC()
+    let bluetooth = MetaWearBluetoothObjC.sharedInstance
+    var sensorReading: SensorData?
+    var sensorWeReading = 0
     
     
     @IBOutlet weak var lineChartView: LineChartView!
-    @IBOutlet weak var sensorButton:UIBarButtonItem!
     @IBOutlet weak var graphTitle: UILabel!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,44 +31,38 @@ class LineGraphViewController: UIViewController, ChartViewDelegate {
         lineChartView.dragEnabled = true
         
         lineChartView.noDataText = "The patch is not hooked up"
-        bluetooth.getDevice{
-            self.graphTitle.text = "Patch is connected"
-        }
         
-        // This code block is for the sidemenu reveal
-        if self.revealViewController() != nil {
-            sensorButton.target = self.revealViewController()
-            sensorButton.action = #selector(SWRevealViewController.revealToggle(_:))
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        }
-        
-
     }
     
-    func setChartData() {
-        
-        setData.dataAdded(bluetooth.voltageData)
-        
-        let data: LineChartData = LineChartData(xVals: [Int](count: setData.set.entryCount, repeatedValue: 1), dataSet: setData.set)
-        lineChartView.data = data
-        
-        lineChartView.setVisibleXRangeMaximum(100)
-        lineChartView.moveViewToX(CGFloat((setData.set.entryCount)))
-
-    }
+    
+    
+    /*func getAverages() -> Int {
+        var findMaxPressureAvg = [Double]()
+        for i in self.bluetooth.sensorArray {
+            i.howMuchPressure()
+            if let j = i.pressureAvg {
+                findMaxPressureAvg.append(j)
+            }
+        }
+        let arrayMax = findMaxPressureAvg.maxElement()
+        for k in 0 ..< findMaxPressureAvg.count {
+            if arrayMax == findMaxPressureAvg[k]{
+                return k
+            }
+        }
+        return 0
+    }*/
     
     
     @IBAction func startStreaming(sender: AnyObject) {
         bluetooth.getValues{
-            self.setData.dataAdded(self.bluetooth.voltageData)
-            
-            
-            let data: LineChartData = LineChartData(xVals: [Int](count: self.setData.set.entryCount, repeatedValue: 1), dataSet: self.setData.set)
+            let sensorDataSet = self.bluetooth.sensorArray[self.sensorWeReading].setData.set
+            let data: LineChartData = LineChartData(xVals: [Int](count: sensorDataSet.entryCount, repeatedValue: 1), dataSet: sensorDataSet)
             self.lineChartView.data = data
             
             self.lineChartView.setVisibleXRangeMaximum(100)
             self.lineChartView.moveViewToX(CGFloat((self.setData.set.entryCount)))
-            
+
         }
     }
     
@@ -74,5 +70,27 @@ class LineGraphViewController: UIViewController, ChartViewDelegate {
         bluetooth.periodicPinValue?.stopNotificationsAsync()
 
     }
+    
+    /*@IBAction func changeSensorReading(sender: UISegmentedControl) {
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            self.sensorWeReading = 0
+        case 1:
+            self.sensorWeReading = 1
+        case 2:
+            self.sensorWeReading = 2
+        case 3:
+            self.sensorWeReading = 3
+        case 4:
+            self.sensorWeReading = 4
+        case 5:
+            self.sensorWeReading = 5
+        case 6:
+            self.sensorWeReading = 6
+        default:
+            print("Sensor is not there")
+            return
+        }
+    }*/
     
 }

@@ -17,7 +17,8 @@
 		9C0BB6411CA03B5500EFE7BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C0BB6401CA03B5500EFE7BF /* Assets.xcassets */; };
 		9C0BB6441CA03B5500EFE7BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C0BB6421CA03B5500EFE7BF /* LaunchScreen.storyboard */; };
 		9C0BB6501CA046BA00EFE7BF /* LineGraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BB64F1CA046BA00EFE7BF /* LineGraphViewController.swift */; };
-		9CB95EB21CA8A77500CBA3EE /* ForceSensorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB95EB11CA8A77500CBA3EE /* ForceSensorTableViewController.swift */; };
+		9CB15F371CAC2B4400F6FEF8 /* SensorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB15F361CAC2B4400F6FEF8 /* SensorData.swift */; };
+		9CBEAAF81CB5B99F001A36DD /* PatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBEAAF71CB5B99F001A36DD /* PatchViewController.swift */; };
 		9CC77B7A1CA98015005B3371 /* MetaWearBluetoothObjC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB654431CA5BD8500A92A2E /* MetaWearBluetoothObjC.swift */; };
 		9CC77B801CA9A99D005B3371 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77B7F1CA9A99D005B3371 /* SWRevealViewController.m */; };
 		9CDDD1F41CA1AA0B0064F4CC /* SetChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDDD1F31CA1AA0B0064F4CC /* SetChartData.swift */; };
@@ -66,8 +67,10 @@
 		9C0BB6431CA03B5500EFE7BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C0BB6451CA03B5500EFE7BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C0BB64F1CA046BA00EFE7BF /* LineGraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineGraphViewController.swift; sourceTree = "<group>"; };
+		9CB15F361CAC2B4400F6FEF8 /* SensorData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SensorData.swift; sourceTree = "<group>"; };
 		9CB654431CA5BD8500A92A2E /* MetaWearBluetoothObjC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetaWearBluetoothObjC.swift; sourceTree = "<group>"; };
 		9CB95EB11CA8A77500CBA3EE /* ForceSensorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForceSensorTableViewController.swift; sourceTree = "<group>"; };
+		9CBEAAF71CB5B99F001A36DD /* PatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatchViewController.swift; sourceTree = "<group>"; };
 		9CC77B7E1CA9A99D005B3371 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = "../../../SWRevealViewController-master/SWRevealViewController/SWRevealViewController.h"; sourceTree = "<group>"; };
 		9CC77B7F1CA9A99D005B3371 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = "../../../SWRevealViewController-master/SWRevealViewController/SWRevealViewController.m"; sourceTree = "<group>"; };
 		9CDDD1F31CA1AA0B0064F4CC /* SetChartData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetChartData.swift; sourceTree = "<group>"; };
@@ -148,7 +151,9 @@
 				9C0147251CA06FE000ED9CB3 /* DynamicDataGenerator.swift */,
 				9C0BB6361CA03B5400EFE7BF /* AppDelegate.swift */,
 				9C0BB63A1CA03B5400EFE7BF /* Main.storyboard */,
+				9CBEAAF71CB5B99F001A36DD /* PatchViewController.swift */,
 				9CB95EB11CA8A77500CBA3EE /* ForceSensorTableViewController.swift */,
+				9CB15F361CAC2B4400F6FEF8 /* SensorData.swift */,
 				9C0BB6401CA03B5500EFE7BF /* Assets.xcassets */,
 				9C0BB6421CA03B5500EFE7BF /* LaunchScreen.storyboard */,
 				9C0BB6451CA03B5500EFE7BF /* Info.plist */,
@@ -342,10 +347,11 @@
 				9CC77B7A1CA98015005B3371 /* MetaWearBluetoothObjC.swift in Sources */,
 				9C0BB63F1CA03B5400EFE7BF /* Mercury_Patch_Prototype.xcdatamodeld in Sources */,
 				9C0BB6371CA03B5400EFE7BF /* AppDelegate.swift in Sources */,
+				9CBEAAF81CB5B99F001A36DD /* PatchViewController.swift in Sources */,
 				9C0BB6501CA046BA00EFE7BF /* LineGraphViewController.swift in Sources */,
 				9CC77B801CA9A99D005B3371 /* SWRevealViewController.m in Sources */,
 				9CDDD1F41CA1AA0B0064F4CC /* SetChartData.swift in Sources */,
-				9CB95EB21CA8A77500CBA3EE /* ForceSensorTableViewController.swift in Sources */,
+				9CB15F371CAC2B4400F6FEF8 /* SensorData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

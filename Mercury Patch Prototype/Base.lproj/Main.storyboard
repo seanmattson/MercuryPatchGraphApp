@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7Cv-Px-sWA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="r1S-VO-iBr">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Line Graph View Controller-->
+        <!--Pressure Tends-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LineGraphViewController" customModule="Mercury_Patch_Prototype" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LineGraphID" title="Pressure Tends" id="BYZ-38-t0r" customClass="LineGraphViewController" customModule="Mercury_Patch_Prototype" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -71,12 +71,74 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1745" y="472"/>
+            <point key="canvasLocation" x="2557" y="472"/>
         </scene>
-        <!--Patch View Controller-->
+        <!--Opening Scene-->
+        <scene sceneID="7bM-Jb-NSs">
+            <objects>
+                <viewController storyboardIdentifier="OpeningSceneID" title="Opening Scene" id="CJC-Fw-xR1" customClass="OpeningSceneViewController" customModule="Mercury_Patch_Prototype" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="36D-ed-utB"/>
+                        <viewControllerLayoutGuide type="bottom" id="kCa-rl-Lne"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4Qp-we-ma8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mercury Patch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvf-4Z-bo4">
+                                <rect key="frame" x="143" y="84" width="315" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l4p-TE-buZ">
+                                <rect key="frame" x="225" y="390" width="152" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="R Class Patch"/>
+                                <connections>
+                                    <segue destination="csL-QB-aoW" kind="show" identifier="RSegue" id="lw7-Q7-ad1"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connecting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFD-MR-iLY">
+                                <rect key="frame" x="249" y="164" width="104" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jk7-QW-nhe">
+                                <rect key="frame" x="223" y="288" width="155" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="C Class Patch"/>
+                                <connections>
+                                    <segue destination="csL-QB-aoW" kind="show" identifier="CSegue" id="FIz-6p-WRW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="l4p-TE-buZ" firstAttribute="top" secondItem="Jk7-QW-nhe" secondAttribute="bottom" constant="60" id="0DO-2O-19c"/>
+                            <constraint firstItem="l4p-TE-buZ" firstAttribute="centerX" secondItem="gvf-4Z-bo4" secondAttribute="centerX" id="1ay-ab-kuT"/>
+                            <constraint firstItem="Jk7-QW-nhe" firstAttribute="top" secondItem="mFD-MR-iLY" secondAttribute="bottom" constant="100" id="2r4-1G-A2M"/>
+                            <constraint firstItem="mFD-MR-iLY" firstAttribute="top" secondItem="gvf-4Z-bo4" secondAttribute="bottom" constant="20" id="DN4-lf-ao4"/>
+                            <constraint firstItem="mFD-MR-iLY" firstAttribute="centerX" secondItem="gvf-4Z-bo4" secondAttribute="centerX" id="GHL-CZ-576"/>
+                            <constraint firstItem="gvf-4Z-bo4" firstAttribute="top" secondItem="36D-ed-utB" secondAttribute="bottom" constant="20" id="Pji-rY-IWf"/>
+                            <constraint firstItem="Jk7-QW-nhe" firstAttribute="centerX" secondItem="gvf-4Z-bo4" secondAttribute="centerX" id="ZCF-Tg-pFV"/>
+                            <constraint firstItem="gvf-4Z-bo4" firstAttribute="centerX" secondItem="4Qp-we-ma8" secondAttribute="centerX" id="yog-rx-32f"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="sL5-nr-2oy"/>
+                    <connections>
+                        <outlet property="connectingLabel" destination="mFD-MR-iLY" id="x6x-p8-XsY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cAW-q2-Jot" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1009" y="472"/>
+        </scene>
+        <!--Patch View-->
         <scene sceneID="sGv-Db-6Am">
             <objects>
-                <viewController id="csL-QB-aoW" customClass="PatchViewController" customModule="Mercury_Patch_Prototype" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PatchViewID" title="Patch View" id="csL-QB-aoW" customClass="PatchViewController" customModule="Mercury_Patch_Prototype" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DaC-tG-kAe"/>
                         <viewControllerLayoutGuide type="bottom" id="Qjz-Cy-uVB"/>
@@ -151,9 +213,6 @@
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="Sensor5" id="NdK-yi-te8"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="7Da-gM-zoA">
-                                <rect key="frame" x="282" y="228" width="37" height="37"/>
-                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAs-KD-euv">
                                 <rect key="frame" x="377" y="254" width="75" height="75"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -197,13 +256,11 @@
                             <constraint firstItem="YaS-OH-d2F" firstAttribute="centerX" secondItem="NSy-Yu-hXv" secondAttribute="centerX" id="JhZ-Ed-dD6"/>
                             <constraint firstItem="vfc-b1-4bF" firstAttribute="centerX" secondItem="zoD-4s-Qcd" secondAttribute="centerX" id="SNf-bg-Ky5"/>
                             <constraint firstItem="zoD-4s-Qcd" firstAttribute="centerX" secondItem="YaS-OH-d2F" secondAttribute="centerX" id="Vx2-oa-OBn"/>
-                            <constraint firstItem="7Da-gM-zoA" firstAttribute="centerX" secondItem="zoD-4s-Qcd" secondAttribute="centerX" id="WMD-FS-sWR"/>
                             <constraint firstItem="vfc-b1-4bF" firstAttribute="top" secondItem="zoD-4s-Qcd" secondAttribute="bottom" constant="30" id="Yya-ns-E7q"/>
                             <constraint firstItem="eAs-KD-euv" firstAttribute="centerX" secondItem="LQN-Mk-zix" secondAttribute="centerX" id="ZF8-d0-GTA"/>
                             <constraint firstItem="hZv-Za-w4r" firstAttribute="top" secondItem="DaC-tG-kAe" secondAttribute="bottom" constant="85" id="drz-Rn-eSA"/>
                             <constraint firstItem="3J9-nd-eRG" firstAttribute="top" secondItem="vfc-b1-4bF" secondAttribute="bottom" constant="93" id="l6e-Hq-VAI"/>
                             <constraint firstItem="eAs-KD-euv" firstAttribute="top" secondItem="LQN-Mk-zix" secondAttribute="bottom" constant="30" id="nlR-QN-9Tk"/>
-                            <constraint firstItem="7Da-gM-zoA" firstAttribute="centerY" secondItem="zoD-4s-Qcd" secondAttribute="centerY" id="peJ-k1-4Qc"/>
                             <constraint firstItem="zoD-4s-Qcd" firstAttribute="top" secondItem="YaS-OH-d2F" secondAttribute="bottom" constant="20" id="qF8-Yz-Ky0"/>
                             <constraint firstItem="3J9-nd-eRG" firstAttribute="centerX" secondItem="vfc-b1-4bF" secondAttribute="centerX" id="rtB-ah-VUW"/>
                             <constraint firstItem="YaS-OH-d2F" firstAttribute="top" secondItem="DaC-tG-kAe" secondAttribute="bottom" constant="50" id="tx4-WK-R0t"/>
@@ -211,7 +268,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="sWa-Rl-6he"/>
                     <connections>
-                        <outlet property="bluetoothConnection" destination="7Da-gM-zoA" id="ZFS-eU-KGM"/>
                         <outlet property="view1" destination="LQN-Mk-zix" id="Ayq-Zt-R0b"/>
                         <outlet property="view2" destination="eAs-KD-euv" id="4x4-9N-g8t"/>
                         <outlet property="view3" destination="vfc-b1-4bF" id="p4j-dA-P88"/>
@@ -223,12 +279,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sf8-nW-Uwd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="993" y="472"/>
+            <point key="canvasLocation" x="1805" y="472"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Get to Graph-->
         <scene sceneID="2lb-GH-dtj">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7Cv-Px-sWA" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="GetToGraphID" title="Get to Graph" automaticallyAdjustsScrollViewInsets="NO" id="7Cv-Px-sWA" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="L8w-fd-UI0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -241,10 +297,29 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MAG-CG-nvY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="181" y="472"/>
+            <point key="canvasLocation" x="1805" y="-280"/>
+        </scene>
+        <!--Initial Navigator-->
+        <scene sceneID="FYD-cG-aP7">
+            <objects>
+                <navigationController storyboardIdentifier="InitialNavigatorID" title="Initial Navigator" automaticallyAdjustsScrollViewInsets="NO" id="r1S-VO-iBr" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DqQ-eO-Rr9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="CJC-Fw-xR1" kind="relationship" relationship="rootViewController" id="97h-rp-Ulj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3su-S4-XdS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1009" y="-257"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="lw7-Q7-ad1"/>
         <segue reference="duI-xC-WXr"/>
     </inferredMetricsTieBreakers>
 </document>

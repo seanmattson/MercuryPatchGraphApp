@@ -13,6 +13,7 @@ class PatchViewController: UIViewController {
     let bluetooth = MetaWearBluetoothObjC.sharedInstance
     let sensorWeReading = 0
     var sensorButtons: [UIButton]?
+    var bluetoothChip: String!
     
     @IBOutlet weak var view1: UIButton!
     @IBOutlet weak var view2: UIButton!
@@ -22,70 +23,24 @@ class PatchViewController: UIViewController {
     @IBOutlet weak var view6: UIButton!
     @IBOutlet weak var view7: UIButton!
     
-    @IBOutlet weak var bluetoothConnection: UIActivityIndicatorView!
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.sensorButtons = [view1, view2, view3, view4, view5, view6, view7]
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        bluetooth.bluetoothChip = self.bluetoothChip
         
-        bluetoothConnection.startAnimating()
-        
-        // Connect to the bluetooth device
-        bluetooth.getDevice {
-            self.bluetoothConnection.stopAnimating()
-        }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Check to see which segue was called
-        if segue.identifier == "Sensor1" {
-            // Choose the sensor to graph
-            let sensorIndex = 1
-            let lineGraphViewController = segue.destinationViewController as! LineGraphViewController
-            lineGraphViewController.sensorWeReading = sensorIndex
-        } else if segue.identifier == "Sensor2" {
-            let sensorIndex = 2
-            let lineGraphViewController = segue.destinationViewController as! LineGraphViewController
-            lineGraphViewController.sensorWeReading = sensorIndex
-        } else if segue.identifier == "Sensor3" {
-            let sensorIndex = 3
-            let lineGraphViewController = segue.destinationViewController as! LineGraphViewController
-            lineGraphViewController.sensorWeReading = sensorIndex
-        } else if segue.identifier == "Sensor4" {
-            let sensorIndex = 4
-            let lineGraphViewController = segue.destinationViewController as! LineGraphViewController
-            lineGraphViewController.sensorWeReading = sensorIndex
-        } else if segue.identifier == "Sensor5" {
-            let sensorIndex = 5
-            let lineGraphViewController = segue.destinationViewController as! LineGraphViewController
-            lineGraphViewController.sensorWeReading = sensorIndex
-        } else if segue.identifier == "Sensor6" {
-            let sensorIndex = 6
-            let lineGraphViewController = segue.destinationViewController as! LineGraphViewController
-            lineGraphViewController.sensorWeReading = sensorIndex
-        } else if segue.identifier == "Sensor7" {
-            let sensorIndex = 0
-            let lineGraphViewController = segue.destinationViewController as! LineGraphViewController
-            lineGraphViewController.sensorWeReading = sensorIndex
-        } else {
-            let sensorIndex = 0
-            let lineGraphViewController = segue.destinationViewController as! LineGraphViewController
-            lineGraphViewController.sensorWeReading = sensorIndex
-        }
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(true)
-        bluetooth.periodicPinValue?.stopNotificationsAsync()
-    }
-    
-    
-    
-    @IBAction func startStreaming(sender: UIButton) {
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
         bluetooth.getValues{
             for sensor in 0..<self.bluetooth.sensorArray.count {
                 if let voltageReading = self.bluetooth.sensorArray[sensor].sensorVoltageReadings.last {
-                    print("Sensor \(sensor) has voltage \(voltageReading)")
                     switch sensor {
                     case 0:
                         if voltageReading >= 0.25 && voltageReading < 0.75 {
@@ -151,6 +106,56 @@ class PatchViewController: UIViewController {
         }
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Check to see which segue was called
+        if segue.identifier == "Sensor1" {
+            // Choose the sensor to graph
+            let sensorIndex = 1
+            let lineGraphViewController = segue.destinationViewController as! LineGraphViewController
+            lineGraphViewController.sensorWeReading = sensorIndex
+        } else if segue.identifier == "Sensor2" {
+            let sensorIndex = 2
+            let lineGraphViewController = segue.destinationViewController as! LineGraphViewController
+            lineGraphViewController.sensorWeReading = sensorIndex
+        } else if segue.identifier == "Sensor3" {
+            let sensorIndex = 3
+            let lineGraphViewController = segue.destinationViewController as! LineGraphViewController
+            lineGraphViewController.sensorWeReading = sensorIndex
+        } else if segue.identifier == "Sensor4" {
+            let sensorIndex = 4
+            let lineGraphViewController = segue.destinationViewController as! LineGraphViewController
+            lineGraphViewController.sensorWeReading = sensorIndex
+        } else if segue.identifier == "Sensor5" {
+            let sensorIndex = 5
+            let lineGraphViewController = segue.destinationViewController as! LineGraphViewController
+            lineGraphViewController.sensorWeReading = sensorIndex
+        } else if segue.identifier == "Sensor6" {
+            let sensorIndex = 6
+            let lineGraphViewController = segue.destinationViewController as! LineGraphViewController
+            lineGraphViewController.sensorWeReading = sensorIndex
+        } else if segue.identifier == "Sensor7" {
+            let sensorIndex = 0
+            let lineGraphViewController = segue.destinationViewController as! LineGraphViewController
+            lineGraphViewController.sensorWeReading = sensorIndex
+        } else {
+            let sensorIndex = 0
+            let lineGraphViewController = segue.destinationViewController as! LineGraphViewController
+            lineGraphViewController.sensorWeReading = sensorIndex
+        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(true)
+        bluetooth.periodicPinValue?.stopNotificationsAsync()
+    }
+    
+    
+    //Starts Streaming, working to make this on View Appear
+    @IBAction func startStreaming(sender: UIButton) {
+
+    }
+    
+    //Stops Streaming on the device
     @IBAction func stopStreaming(sender: UIButton) {
         view1.backgroundColor = UIColor.orangeColor()
         view2.backgroundColor = UIColor.orangeColor()

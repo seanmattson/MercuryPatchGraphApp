@@ -17,6 +17,7 @@ class MetaWearBluetoothObjC {
     var devices: [MBLMetaWear]?
     var device: MBLMetaWear?
     var periodicPinValue: MBLEvent?
+    var bluetoothChip = "C"
     
     // Create the sensor data
     var Sensor1 = SensorData("Sensor 1")
@@ -76,40 +77,40 @@ class MetaWearBluetoothObjC {
             pin4.configuration = MBLPinConfiguration.Pulldown
             pin6.configuration = MBLPinConfiguration.Pulldown
             pin7.configuration = MBLPinConfiguration.Pulldown
-
-        
+            
+            
         case .sensor2:
             pin4.configuration = MBLPinConfiguration.Pullup
             pin6.configuration = MBLPinConfiguration.Pulldown
             pin7.configuration = MBLPinConfiguration.Pulldown
-
-        
+            
+            
         case .sensor3:
-             pin4.configuration = MBLPinConfiguration.Pulldown
-             pin6.configuration = MBLPinConfiguration.Pullup
-             pin7.configuration = MBLPinConfiguration.Pulldown
- 
+            pin4.configuration = MBLPinConfiguration.Pulldown
+            pin6.configuration = MBLPinConfiguration.Pullup
+            pin7.configuration = MBLPinConfiguration.Pulldown
+            
             
         case .sensor4:
             pin4.configuration = MBLPinConfiguration.Pullup
             pin6.configuration = MBLPinConfiguration.Pullup
             pin7.configuration = MBLPinConfiguration.Pulldown
-
+            
         case .sensor5:
             pin4.configuration = MBLPinConfiguration.Pulldown
             pin6.configuration = MBLPinConfiguration.Pulldown
             pin7.configuration = MBLPinConfiguration.Pullup
-
+            
         case .sensor6:
             pin4.configuration = MBLPinConfiguration.Pullup
             pin6.configuration = MBLPinConfiguration.Pulldown
             pin7.configuration = MBLPinConfiguration.Pullup
-        
+            
         case .sensor7:
             pin4.configuration = MBLPinConfiguration.Pulldown
             pin6.configuration = MBLPinConfiguration.Pullup
             pin7.configuration = MBLPinConfiguration.Pullup
-        
+            
         }
         
         if equationCount < self.sensorChoice.count - 1 {
@@ -125,21 +126,45 @@ class MetaWearBluetoothObjC {
     //The closure is used to update the graph with the new values
     func getValues(updateGraph: () -> ()) {
         
+        var pin0: MBLGPIOPin?
+        var pin6: MBLGPIOPin?
+        var pin7: MBLGPIOPin?
+        var pin4: MBLGPIOPin?
+        
         // Make sure the bluetooth device is connected
         guard device?.gpio?.pins != nil else {
             print("We done goofed")
             return
         }
         //Define these pins for the future
+        
+        // R pins
+        /*
         let pin4: MBLGPIOPin = device?.gpio?.pins[4] as! MBLGPIOPin
         let pin6: MBLGPIOPin = device?.gpio?.pins[6] as! MBLGPIOPin
         let pin7: MBLGPIOPin = device?.gpio?.pins[7] as! MBLGPIOPin
         let pin0: MBLGPIOPin = device?.gpio?.pins[0] as! MBLGPIOPin
+        */
+        
+        // C pins
+        if bluetoothChip == "C" {
+            pin4 = device?.gpio?.pins[2] as? MBLGPIOPin
+            pin6 = device?.gpio?.pins[1] as? MBLGPIOPin
+            pin7 = device?.gpio?.pins[0] as? MBLGPIOPin
+            pin0 = device?.gpio?.pins[3] as? MBLGPIOPin
+            print("C chip")
+        } else {
+            pin4 = device?.gpio?.pins[4] as? MBLGPIOPin
+            pin6 = device?.gpio?.pins[6] as? MBLGPIOPin
+            pin7 = device?.gpio?.pins[7] as? MBLGPIOPin
+            pin0 = device?.gpio?.pins[0] as? MBLGPIOPin
+            print("R chip")
+        }
         
         var j = 0
-        periodicPinValue = pin0.analogAbsolute.periodicReadWithPeriod(150)
+        periodicPinValue = pin0!.analogAbsolute.periodicReadWithPeriod(500)
         periodicPinValue?.startNotificationsWithHandlerAsync({(obj: AnyObject?, error: NSError?) in
-            j = self.getVoltageAllSensors(pin4, pin6: pin6, pin7: pin7, numberSensor: j)
+            j = self.getVoltageAllSensors(pin4!, pin6: pin6!, pin7: pin7!, numberSensor: j)
             if let voltage = obj as? MBLNumericData {
                 switch j {
                 case 1:
@@ -159,6 +184,7 @@ class MetaWearBluetoothObjC {
                 default:
                     print("No sensor there")
                 }
+                print("We see sensor \(j) with value \(Double(voltage.value)) at time \(NSDate())")
             }
             updateGraph()
             

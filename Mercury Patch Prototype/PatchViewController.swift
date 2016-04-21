@@ -22,12 +22,22 @@ class PatchViewController: UIViewController {
     @IBOutlet weak var view5: UIButton!
     @IBOutlet weak var view6: UIButton!
     @IBOutlet weak var view7: UIButton!
+    @IBOutlet weak var backgroundImage: UIImageView!
+    
     
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.sensorButtons = [view1, view2, view3, view4, view5, view6, view7]
+        view1.layer.cornerRadius = view1.frame.width / 2.0
+        view2.layer.cornerRadius = view1.frame.width / 2.0
+        view3.layer.cornerRadius = view1.frame.width / 2.0
+        view4.layer.cornerRadius = view1.frame.width / 2.0
+        view5.layer.cornerRadius = view1.frame.width / 2.0
+        view6.layer.cornerRadius = view1.frame.width / 2.0
+        view7.layer.cornerRadius = view1.frame.width / 2.0
+        self.view.sendSubviewToBack(backgroundImage)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -44,21 +54,13 @@ class PatchViewController: UIViewController {
                     switch sensor {
                     case 0:
                         if voltageReading >= 0.25 && voltageReading < 0.75 {
-                            self.view7.backgroundColor = UIColor.yellowColor()
-                        } else if voltageReading >= 0.75 {
-                            self.view7.backgroundColor = UIColor.redColor()
-                        } else {
-                            self.view7.backgroundColor = UIColor.blueColor()
-                        }
-                    case 1:
-                        if voltageReading >= 0.25 && voltageReading < 0.75 {
                             self.view1.backgroundColor = UIColor.yellowColor()
                         } else if voltageReading >= 0.75 {
                             self.view1.backgroundColor = UIColor.redColor()
                         } else {
                             self.view1.backgroundColor = UIColor.blueColor()
                         }
-                    case 2:
+                    case 1:
                         if voltageReading >= 0.25 && voltageReading < 0.75 {
                             self.view2.backgroundColor = UIColor.yellowColor()
                         } else if voltageReading >= 0.75 {
@@ -66,7 +68,7 @@ class PatchViewController: UIViewController {
                         } else {
                             self.view2.backgroundColor = UIColor.blueColor()
                         }
-                    case 3:
+                    case 2:
                         if voltageReading >= 0.25 && voltageReading < 0.75 {
                             self.view3.backgroundColor = UIColor.yellowColor()
                         } else if voltageReading >= 0.75 {
@@ -74,7 +76,7 @@ class PatchViewController: UIViewController {
                         } else {
                             self.view3.backgroundColor = UIColor.blueColor()
                         }
-                    case 4:
+                    case 3:
                         if voltageReading >= 0.25 && voltageReading < 0.75 {
                             self.view4.backgroundColor = UIColor.yellowColor()
                         } else if voltageReading >= 0.75 {
@@ -82,7 +84,7 @@ class PatchViewController: UIViewController {
                         } else {
                             self.view4.backgroundColor = UIColor.blueColor()
                         }
-                    case 5:
+                    case 4:
                         if voltageReading >= 0.25 && voltageReading < 0.75 {
                             self.view5.backgroundColor = UIColor.yellowColor()
                         } else if voltageReading >= 0.75 {
@@ -90,13 +92,21 @@ class PatchViewController: UIViewController {
                         } else {
                             self.view5.backgroundColor = UIColor.blueColor()
                         }
-                    case 6:
+                    case 5:
                         if voltageReading >= 0.25 && voltageReading < 0.75 {
                             self.view6.backgroundColor = UIColor.yellowColor()
                         } else if voltageReading >= 0.75 {
                             self.view6.backgroundColor = UIColor.redColor()
                         } else {
                             self.view6.backgroundColor = UIColor.blueColor()
+                        }
+                    case 6:
+                        if voltageReading >= 0.25 && voltageReading < 0.75 {
+                            self.view7.backgroundColor = UIColor.yellowColor()
+                        } else if voltageReading >= 0.75 {
+                            self.view7.backgroundColor = UIColor.redColor()
+                        } else {
+                            self.view7.backgroundColor = UIColor.blueColor()
                         }
                     default:
                         print("Index is out of range")
@@ -151,12 +161,12 @@ class PatchViewController: UIViewController {
     
     
     //Starts Streaming, working to make this on View Appear
-    @IBAction func startStreaming(sender: UIButton) {
+   /* @IBAction func startStreaming(sender: UIButton) {
 
-    }
+    }*/
     
     //Stops Streaming on the device
-    @IBAction func stopStreaming(sender: UIButton) {
+    /*@IBAction func stopStreaming(sender: UIButton) {
         view1.backgroundColor = UIColor.orangeColor()
         view2.backgroundColor = UIColor.orangeColor()
         view3.backgroundColor = UIColor.orangeColor()
@@ -165,7 +175,7 @@ class PatchViewController: UIViewController {
         view6.backgroundColor = UIColor.orangeColor()
         view7.backgroundColor = UIColor.orangeColor()
         bluetooth.periodicPinValue?.stopNotificationsAsync()
-    }
+    }*/
     
     
 }

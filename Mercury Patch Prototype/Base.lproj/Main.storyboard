@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -88,7 +89,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mercury Patch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvf-4Z-bo4">
                                 <rect key="frame" x="143" y="84" width="315" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l4p-TE-buZ">
@@ -102,7 +103,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connecting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFD-MR-iLY">
                                 <rect key="frame" x="249" y="164" width="104" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jk7-QW-nhe">
@@ -147,127 +148,114 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZv-Za-w4r">
-                                <rect key="frame" x="148" y="149" width="75" height="75"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="patch_outline_app_mepilex" translatesAutoresizingMaskIntoConstraints="NO" id="lez-ti-cyH">
+                                <rect key="frame" x="20" y="50" width="560" height="500"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="5Dq-B4-vQ2"/>
-                                    <constraint firstAttribute="width" constant="75" id="8o3-jv-seC"/>
+                                    <constraint firstAttribute="width" secondItem="lez-ti-cyH" secondAttribute="height" multiplier="28:25" id="Aqm-hG-HeY"/>
                                 </constraints>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="Sensor7" id="kfu-6q-SmQ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfc-b1-4bF">
-                                <rect key="frame" x="263" y="314" width="75" height="75"/>
+                            </imageView>
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfc-b1-4bF">
+                                <rect key="frame" x="275" y="359" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="hPd-6X-Wrh"/>
-                                    <constraint firstAttribute="width" constant="75" id="u9O-Up-7ZI"/>
+                                    <constraint firstAttribute="height" constant="50" id="hPd-6X-Wrh"/>
+                                    <constraint firstAttribute="width" constant="50" id="u9O-Up-7ZI"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="Sensor3" id="UUw-aq-YjM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQN-Mk-zix">
-                                <rect key="frame" x="377" y="149" width="75" height="75"/>
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZv-Za-w4r">
+                                <rect key="frame" x="190" y="224" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="75" id="9HI-6M-KNr"/>
-                                    <constraint firstAttribute="height" constant="75" id="hz6-QM-gaN"/>
+                                    <constraint firstAttribute="height" constant="50" id="5Dq-B4-vQ2"/>
+                                    <constraint firstAttribute="width" constant="50" id="8o3-jv-seC"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="Sensor2" id="ahW-80-LXf"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="Sensor7" id="kfu-6q-SmQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YaS-OH-d2F">
-                                <rect key="frame" x="263" y="114" width="75" height="75"/>
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YaS-OH-d2F">
+                                <rect key="frame" x="275" y="229" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="AVn-QD-qci"/>
-                                    <constraint firstAttribute="width" constant="75" id="hWs-oJ-KHs"/>
+                                    <constraint firstAttribute="height" constant="50" id="AVn-QD-qci"/>
+                                    <constraint firstAttribute="width" constant="50" id="hWs-oJ-KHs"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="Sensor4" id="VXc-Zf-zx0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xbb-aG-46R">
-                                <rect key="frame" x="148" y="254" width="75" height="75"/>
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAs-KD-euv">
+                                <rect key="frame" x="360" y="294" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="E84-Bg-bC5"/>
-                                    <constraint firstAttribute="width" constant="75" id="ThV-cC-122"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="Sensor6" id="duI-xC-WXr"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoD-4s-Qcd">
-                                <rect key="frame" x="263" y="209" width="75" height="75"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="2tf-qr-f4R"/>
-                                    <constraint firstAttribute="width" constant="75" id="n4p-kH-OgN"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="Sensor5" id="NdK-yi-te8"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAs-KD-euv">
-                                <rect key="frame" x="377" y="254" width="75" height="75"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="HCy-fR-1Qr"/>
-                                    <constraint firstAttribute="width" constant="75" id="RwH-rj-diT"/>
+                                    <constraint firstAttribute="height" constant="50" id="HCy-fR-1Qr"/>
+                                    <constraint firstAttribute="width" constant="50" id="RwH-rj-diT"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="Sensor1" id="a8p-YE-Mjj"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="3J9-nd-eRG">
-                                <rect key="frame" x="152" y="482" width="297" height="36"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E2T-xw-a8g">
-                                        <rect key="frame" x="0.0" y="0.0" width="140" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Start Streaming"/>
-                                        <connections>
-                                            <action selector="startStreaming:" destination="csL-QB-aoW" eventType="touchUpInside" id="9lf-Md-wws"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9M7-Pq-E6G">
-                                        <rect key="frame" x="159" y="0.0" width="138" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Stop Streaming"/>
-                                        <connections>
-                                            <action selector="stopStreaming:" destination="csL-QB-aoW" eventType="touchUpInside" id="Kss-FE-aH5"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zoD-4s-Qcd">
+                                <rect key="frame" x="275" y="294" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="2tf-qr-f4R"/>
+                                    <constraint firstAttribute="width" constant="50" id="n4p-kH-OgN"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="Sensor5" id="NdK-yi-te8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xbb-aG-46R">
+                                <rect key="frame" x="190" y="294" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="E84-Bg-bC5"/>
+                                    <constraint firstAttribute="width" constant="50" id="ThV-cC-122"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="Sensor6" id="duI-xC-WXr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQN-Mk-zix">
+                                <rect key="frame" x="360" y="224" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="9HI-6M-KNr"/>
+                                    <constraint firstAttribute="height" constant="50" id="hz6-QM-gaN"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="Sensor2" id="ahW-80-LXf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xbb-aG-46R" firstAttribute="top" secondItem="hZv-Za-w4r" secondAttribute="bottom" constant="30" id="29j-Sc-gYR"/>
-                            <constraint firstItem="LQN-Mk-zix" firstAttribute="centerX" secondItem="NSy-Yu-hXv" secondAttribute="centerX" constant="114.5" id="3i5-mz-3fi"/>
-                            <constraint firstItem="LQN-Mk-zix" firstAttribute="top" secondItem="DaC-tG-kAe" secondAttribute="bottom" constant="85" id="Ae3-lv-ohk"/>
+                            <constraint firstItem="xbb-aG-46R" firstAttribute="top" secondItem="hZv-Za-w4r" secondAttribute="bottom" constant="20" id="29j-Sc-gYR"/>
+                            <constraint firstItem="LQN-Mk-zix" firstAttribute="centerX" secondItem="NSy-Yu-hXv" secondAttribute="centerX" constant="85" id="3i5-mz-3fi"/>
+                            <constraint firstItem="LQN-Mk-zix" firstAttribute="top" secondItem="DaC-tG-kAe" secondAttribute="bottom" constant="160" id="Ae3-lv-ohk"/>
                             <constraint firstItem="xbb-aG-46R" firstAttribute="centerX" secondItem="hZv-Za-w4r" secondAttribute="centerX" id="Bgz-cG-mMk"/>
-                            <constraint firstItem="hZv-Za-w4r" firstAttribute="centerX" secondItem="NSy-Yu-hXv" secondAttribute="centerX" constant="-114.5" id="Dgy-80-aJZ"/>
+                            <constraint firstItem="lez-ti-cyH" firstAttribute="leading" secondItem="NSy-Yu-hXv" secondAttribute="leadingMargin" id="DHa-E9-sH0"/>
+                            <constraint firstItem="hZv-Za-w4r" firstAttribute="centerX" secondItem="NSy-Yu-hXv" secondAttribute="centerX" constant="-85" id="Dgy-80-aJZ"/>
+                            <constraint firstItem="lez-ti-cyH" firstAttribute="trailing" secondItem="NSy-Yu-hXv" secondAttribute="trailingMargin" id="IxZ-J7-NmW"/>
                             <constraint firstItem="YaS-OH-d2F" firstAttribute="centerX" secondItem="NSy-Yu-hXv" secondAttribute="centerX" id="JhZ-Ed-dD6"/>
                             <constraint firstItem="vfc-b1-4bF" firstAttribute="centerX" secondItem="zoD-4s-Qcd" secondAttribute="centerX" id="SNf-bg-Ky5"/>
                             <constraint firstItem="zoD-4s-Qcd" firstAttribute="centerX" secondItem="YaS-OH-d2F" secondAttribute="centerX" id="Vx2-oa-OBn"/>
-                            <constraint firstItem="vfc-b1-4bF" firstAttribute="top" secondItem="zoD-4s-Qcd" secondAttribute="bottom" constant="30" id="Yya-ns-E7q"/>
+                            <constraint firstItem="vfc-b1-4bF" firstAttribute="top" secondItem="zoD-4s-Qcd" secondAttribute="bottom" constant="15" id="Yya-ns-E7q"/>
                             <constraint firstItem="eAs-KD-euv" firstAttribute="centerX" secondItem="LQN-Mk-zix" secondAttribute="centerX" id="ZF8-d0-GTA"/>
-                            <constraint firstItem="hZv-Za-w4r" firstAttribute="top" secondItem="DaC-tG-kAe" secondAttribute="bottom" constant="85" id="drz-Rn-eSA"/>
-                            <constraint firstItem="3J9-nd-eRG" firstAttribute="top" secondItem="vfc-b1-4bF" secondAttribute="bottom" constant="93" id="l6e-Hq-VAI"/>
-                            <constraint firstItem="eAs-KD-euv" firstAttribute="top" secondItem="LQN-Mk-zix" secondAttribute="bottom" constant="30" id="nlR-QN-9Tk"/>
-                            <constraint firstItem="zoD-4s-Qcd" firstAttribute="top" secondItem="YaS-OH-d2F" secondAttribute="bottom" constant="20" id="qF8-Yz-Ky0"/>
-                            <constraint firstItem="3J9-nd-eRG" firstAttribute="centerX" secondItem="vfc-b1-4bF" secondAttribute="centerX" id="rtB-ah-VUW"/>
-                            <constraint firstItem="YaS-OH-d2F" firstAttribute="top" secondItem="DaC-tG-kAe" secondAttribute="bottom" constant="50" id="tx4-WK-R0t"/>
+                            <constraint firstItem="lez-ti-cyH" firstAttribute="centerY" secondItem="NSy-Yu-hXv" secondAttribute="centerY" id="ckm-c2-pUE"/>
+                            <constraint firstItem="hZv-Za-w4r" firstAttribute="top" secondItem="DaC-tG-kAe" secondAttribute="bottom" constant="160" id="drz-Rn-eSA"/>
+                            <constraint firstItem="eAs-KD-euv" firstAttribute="top" secondItem="LQN-Mk-zix" secondAttribute="bottom" constant="20" id="nlR-QN-9Tk"/>
+                            <constraint firstItem="zoD-4s-Qcd" firstAttribute="top" secondItem="YaS-OH-d2F" secondAttribute="bottom" constant="15" id="qF8-Yz-Ky0"/>
+                            <constraint firstItem="YaS-OH-d2F" firstAttribute="top" secondItem="DaC-tG-kAe" secondAttribute="bottom" constant="165" id="tx4-WK-R0t"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sWa-Rl-6he"/>
                     <connections>
+                        <outlet property="backgroundImage" destination="lez-ti-cyH" id="JCO-Oq-msv"/>
                         <outlet property="view1" destination="LQN-Mk-zix" id="Ayq-Zt-R0b"/>
                         <outlet property="view2" destination="eAs-KD-euv" id="4x4-9N-g8t"/>
                         <outlet property="view3" destination="vfc-b1-4bF" id="p4j-dA-P88"/>
@@ -318,6 +306,9 @@
             <point key="canvasLocation" x="1009" y="-257"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="patch_outline_app_mepilex" width="375" height="333"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="lw7-Q7-ad1"/>
         <segue reference="duI-xC-WXr"/>

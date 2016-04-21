@@ -20,20 +20,20 @@ class MetaWearBluetoothObjC {
     var bluetoothChip = "C"
     
     // Create the sensor data
+    var Sensor0 = SensorData("Sensor 0")
     var Sensor1 = SensorData("Sensor 1")
     var Sensor2 = SensorData("Sensor 2")
     var Sensor3 = SensorData("Sensor 3")
     var Sensor4 = SensorData("Sensor 4")
     var Sensor5 = SensorData("Sensor 5")
     var Sensor6 = SensorData("Sensor 6")
-    var Sensor7 = SensorData("Sensor 7")
     
     //Create an array of the sensor states
     var sensorArray: [SensorData]
-    let sensorChoice: [SensorToRead] = [.sensor1, .sensor2, .sensor3, .sensor4, .sensor5, .sensor6, .sensor7]
+    let sensorChoice: [SensorToRead] = [.sensor0, .sensor1, .sensor2, .sensor3, .sensor4, .sensor5, .sensor6]
     
     private init() {
-        self.sensorArray = [Sensor1, Sensor2, Sensor3, Sensor4, Sensor5, Sensor6, Sensor7]
+        self.sensorArray = [Sensor6, Sensor4, Sensor5, Sensor2, Sensor3, Sensor1, Sensor0]
     }
 
     
@@ -60,53 +60,53 @@ class MetaWearBluetoothObjC {
     
     // This enumeration is for the pin states ... And therefore to update the sensor choice
     enum SensorToRead: String {
+        case sensor0
         case sensor1
         case sensor2
         case sensor3
         case sensor4
         case sensor5
         case sensor6
-        case sensor7
     }
     
     func getVoltageAllSensors(pin4: MBLGPIOPin, pin6: MBLGPIOPin, pin7: MBLGPIOPin, numberSensor: Int) -> Int {
         var equationCount = numberSensor
         let i  = sensorChoice[numberSensor]
         switch i {
-        case .sensor1:
+        case .sensor0:
             pin4.configuration = MBLPinConfiguration.Pulldown
+            pin6.configuration = MBLPinConfiguration.Pulldown
+            pin7.configuration = MBLPinConfiguration.Pulldown
+            
+            
+        case .sensor1:
+            pin4.configuration = MBLPinConfiguration.Pullup
             pin6.configuration = MBLPinConfiguration.Pulldown
             pin7.configuration = MBLPinConfiguration.Pulldown
             
             
         case .sensor2:
-            pin4.configuration = MBLPinConfiguration.Pullup
-            pin6.configuration = MBLPinConfiguration.Pulldown
+            pin4.configuration = MBLPinConfiguration.Pulldown
+            pin6.configuration = MBLPinConfiguration.Pullup
             pin7.configuration = MBLPinConfiguration.Pulldown
             
             
         case .sensor3:
-            pin4.configuration = MBLPinConfiguration.Pulldown
-            pin6.configuration = MBLPinConfiguration.Pullup
-            pin7.configuration = MBLPinConfiguration.Pulldown
-            
-            
-        case .sensor4:
             pin4.configuration = MBLPinConfiguration.Pullup
             pin6.configuration = MBLPinConfiguration.Pullup
             pin7.configuration = MBLPinConfiguration.Pulldown
             
-        case .sensor5:
+        case .sensor4:
             pin4.configuration = MBLPinConfiguration.Pulldown
+            pin6.configuration = MBLPinConfiguration.Pulldown
+            pin7.configuration = MBLPinConfiguration.Pullup
+            
+        case .sensor5:
+            pin4.configuration = MBLPinConfiguration.Pullup
             pin6.configuration = MBLPinConfiguration.Pulldown
             pin7.configuration = MBLPinConfiguration.Pullup
             
         case .sensor6:
-            pin4.configuration = MBLPinConfiguration.Pullup
-            pin6.configuration = MBLPinConfiguration.Pulldown
-            pin7.configuration = MBLPinConfiguration.Pullup
-            
-        case .sensor7:
             pin4.configuration = MBLPinConfiguration.Pulldown
             pin6.configuration = MBLPinConfiguration.Pullup
             pin7.configuration = MBLPinConfiguration.Pullup
@@ -162,31 +162,34 @@ class MetaWearBluetoothObjC {
         }
         
         var j = 0
-        periodicPinValue = pin0!.analogAbsolute.periodicReadWithPeriod(500)
+        periodicPinValue = pin0!.analogAbsolute.periodicReadWithPeriod(1000)
         periodicPinValue?.startNotificationsWithHandlerAsync({(obj: AnyObject?, error: NSError?) in
-            j = self.getVoltageAllSensors(pin4!, pin6: pin6!, pin7: pin7!, numberSensor: j)
+            //Cases are defined as actual sensor number + 1, except for 7 which is 0
+            //This is due to the how I numbered is in the get voltage all sensors equation
             if let voltage = obj as? MBLNumericData {
                 switch j {
                 case 1:
-                    self.Sensor1.sensorVoltageReadings.append(Double(voltage.value))
+                    self.Sensor0.sensorVoltageReadings.append(Double(voltage.value))
                 case 2:
-                    self.Sensor2.sensorVoltageReadings.append(Double(voltage.value))
+                    self.Sensor1.sensorVoltageReadings.append(Double(voltage.value))
                 case 3:
-                    self.Sensor3.sensorVoltageReadings.append(Double(voltage.value))
+                    self.Sensor2.sensorVoltageReadings.append(Double(voltage.value))
                 case 4:
-                    self.Sensor4.sensorVoltageReadings.append(Double(voltage.value))
+                    self.Sensor3.sensorVoltageReadings.append(Double(voltage.value))
                 case 5:
-                    self.Sensor5.sensorVoltageReadings.append(Double(voltage.value))
+                    self.Sensor4.sensorVoltageReadings.append(Double(voltage.value))
                 case 6:
-                    self.Sensor6.sensorVoltageReadings.append(Double(voltage.value))
+                    self.Sensor5.sensorVoltageReadings.append(Double(voltage.value))
                 case 0:
-                    self.Sensor7.sensorVoltageReadings.append(Double(voltage.value))
+                    self.Sensor6.sensorVoltageReadings.append(Double(voltage.value))
                 default:
                     print("No sensor there")
                 }
                 print("We see sensor \(j) with value \(Double(voltage.value)) at time \(NSDate())")
             }
             updateGraph()
+            j = self.getVoltageAllSensors(pin4!, pin6: pin6!, pin7: pin7!, numberSensor: j)
+            print("Sensor Changed")
             
         })
 

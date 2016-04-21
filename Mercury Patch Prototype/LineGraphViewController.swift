@@ -42,7 +42,8 @@ class LineGraphViewController: UIViewController, ChartViewDelegate {
             self.lineChartView.data = data
             
             self.lineChartView.setVisibleXRangeMaximum(100)
-            self.lineChartView.moveViewToX(CGFloat((self.setData.set.entryCount)))
+            self.lineChartView.moveViewToX(CGFloat((sensorDataSet.entryCount)))
+            print(Int(sensorDataSet.entryCount))
         }
     }
     

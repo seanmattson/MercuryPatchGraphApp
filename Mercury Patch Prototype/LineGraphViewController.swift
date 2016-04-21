@@ -17,6 +17,7 @@ class LineGraphViewController: UIViewController, ChartViewDelegate {
     let bluetooth = MetaWearBluetoothObjC.sharedInstance
     var sensorReading: SensorData?
     var sensorWeReading: Int!
+    var yAxis: ChartYAxis?
     
     
     @IBOutlet weak var lineChartView: LineChartView!
@@ -30,6 +31,9 @@ class LineGraphViewController: UIViewController, ChartViewDelegate {
         lineChartView.gridBackgroundColor = UIColor.darkGrayColor()
         lineChartView.dragEnabled = true
         
+        //Trying out to see if force constant axes
+        yAxis = lineChartView.getAxis(ChartYAxis.AxisDependency.Left)
+        
         lineChartView.noDataText = "The patch is not hooked up"
         
     }
@@ -37,6 +41,11 @@ class LineGraphViewController: UIViewController, ChartViewDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         bluetooth.getValues{
+            
+            //Trying to set axis values
+            self.yAxis?.axisMaximum = 3.00
+            self.yAxis?.axisMinimum = -0.1
+            
             let sensorDataSet = self.bluetooth.sensorArray[self.sensorWeReading].setData.set
             let data: LineChartData = LineChartData(xVals: [Int](count: sensorDataSet.entryCount, repeatedValue: 1), dataSet: sensorDataSet)
             self.lineChartView.data = data

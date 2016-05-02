@@ -120,31 +120,31 @@ class PatchViewController: UIViewController {
         // Check to see which segue was called
         if segue.identifier == "Sensor1" {
             // Choose the sensor to graph
-            let sensorIndex = 1
+            let sensorIndex = 0
             let lineGraphViewController = segue.destinationViewController as! LineGraphViewController
             lineGraphViewController.sensorWeReading = sensorIndex
         } else if segue.identifier == "Sensor2" {
-            let sensorIndex = 2
+            let sensorIndex = 1
             let lineGraphViewController = segue.destinationViewController as! LineGraphViewController
             lineGraphViewController.sensorWeReading = sensorIndex
         } else if segue.identifier == "Sensor3" {
-            let sensorIndex = 3
+            let sensorIndex = 2
             let lineGraphViewController = segue.destinationViewController as! LineGraphViewController
             lineGraphViewController.sensorWeReading = sensorIndex
         } else if segue.identifier == "Sensor4" {
-            let sensorIndex = 4
+            let sensorIndex = 3
             let lineGraphViewController = segue.destinationViewController as! LineGraphViewController
             lineGraphViewController.sensorWeReading = sensorIndex
         } else if segue.identifier == "Sensor5" {
-            let sensorIndex = 5
+            let sensorIndex = 4
             let lineGraphViewController = segue.destinationViewController as! LineGraphViewController
             lineGraphViewController.sensorWeReading = sensorIndex
         } else if segue.identifier == "Sensor6" {
-            let sensorIndex = 6
+            let sensorIndex = 5
             let lineGraphViewController = segue.destinationViewController as! LineGraphViewController
             lineGraphViewController.sensorWeReading = sensorIndex
         } else if segue.identifier == "Sensor7" {
-            let sensorIndex = 0
+            let sensorIndex = 6
             let lineGraphViewController = segue.destinationViewController as! LineGraphViewController
             lineGraphViewController.sensorWeReading = sensorIndex
         } else {

@@ -30,7 +30,7 @@ class MetaWearBluetoothObjC {
     
     //Create an array of the sensor states
     var sensorArray: [SensorData]
-    let sensorChoice: [SensorToRead] = [.sensor0, .sensor1, .sensor2, .sensor3, .sensor4, .sensor5, .sensor6]
+    let sensorChoice: [SensorToRead] = [.sensor0, .sensor1, .sensor2, .sensor3, .sensor4, .sensor5, .sensor6/* .largeImpedance*/]
     
     private init() {
         self.sensorArray = [Sensor6, Sensor4, Sensor5, Sensor2, Sensor3, Sensor1, Sensor0]
@@ -50,7 +50,6 @@ class MetaWearBluetoothObjC {
                 
                 self.device = cur
                 self.device?.connectWithHandler { (error: NSError?) -> Void in
-                    //self.device?.led?.flashLEDColorAsync(UIColor.redColor(), withIntensity:  0.5)
                     print("We are connected")
                     updateText()
                 }
@@ -67,6 +66,7 @@ class MetaWearBluetoothObjC {
         case sensor4
         case sensor5
         case sensor6
+        //case largeImpedance
     }
     
     func getVoltageAllSensors(pin4: MBLGPIOPin, pin6: MBLGPIOPin, pin7: MBLGPIOPin, numberSensor: Int) -> Int {
@@ -111,6 +111,11 @@ class MetaWearBluetoothObjC {
             pin6.configuration = MBLPinConfiguration.Pullup
             pin7.configuration = MBLPinConfiguration.Pullup
             
+       /* case .largeImpedance:
+            pin4.configuration = MBLPinConfiguration.Pullup
+            pin6.configuration = MBLPinConfiguration.Pullup
+            pin7.configuration = MBLPinConfiguration.Pullup */
+            
         }
         
         if equationCount < self.sensorChoice.count - 1 {
@@ -136,16 +141,8 @@ class MetaWearBluetoothObjC {
             print("We done goofed")
             return
         }
-        //Define these pins for the future
         
-        // R pins
-        /*
-        let pin4: MBLGPIOPin = device?.gpio?.pins[4] as! MBLGPIOPin
-        let pin6: MBLGPIOPin = device?.gpio?.pins[6] as! MBLGPIOPin
-        let pin7: MBLGPIOPin = device?.gpio?.pins[7] as! MBLGPIOPin
-        let pin0: MBLGPIOPin = device?.gpio?.pins[0] as! MBLGPIOPin
-        */
-        
+        //Define these pins
         // C pins
         if bluetoothChip == "C" {
             pin4 = device?.gpio?.pins[2] as? MBLGPIOPin
@@ -162,7 +159,7 @@ class MetaWearBluetoothObjC {
         }
         
         var j = 0
-        periodicPinValue = pin0!.analogAbsolute.periodicReadWithPeriod(1000)
+        periodicPinValue = pin0!.analogAbsolute.periodicReadWithPeriod(150)
         periodicPinValue?.startNotificationsWithHandlerAsync({(obj: AnyObject?, error: NSError?) in
             //Cases are defined as actual sensor number + 1, except for 7 which is 0
             //This is due to the how I numbered is in the get voltage all sensors equation
@@ -180,8 +177,16 @@ class MetaWearBluetoothObjC {
                     self.Sensor4.sensorVoltageReadings.append(Double(voltage.value))
                 case 6:
                     self.Sensor5.sensorVoltageReadings.append(Double(voltage.value))
+                
                 case 0:
+                    self.Sensor6.sensorVoltageReadings.append(Double(voltage.value)) 
+                
+                // If we do a large impedance to normalize multiplexer, we use this
+               /*case 7:
                     self.Sensor6.sensorVoltageReadings.append(Double(voltage.value))
+                case 0:
+                    break*/
+                
                 default:
                     print("No sensor there")
                 }
